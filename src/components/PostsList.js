@@ -9,7 +9,7 @@ const PostsList = () => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
-        data={data}
+        data={data?.reverse()}
         renderItem={({ item }) => <PostCard post={item} />}
         contentContainerStyle={{ padding: 10, gap: 10 }}
         ListEmptyComponent={

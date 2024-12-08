@@ -1,8 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import HomeNav from './HomeNav';
 import COLORS from '../utils/colors';
-import Explore from '../screens/Explore';
 import Account from '../screens/Account';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 
@@ -22,15 +21,21 @@ export default function BottomNav() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeNav"
         component={HomeNav}
         options={{
           tabBarIcon: ({ color }) => <Icon name="house-chimney" size={20} color={color} />,
         }}
       />
       <Tab.Screen
-        name="Explore"
-        component={Explore}
+        name="CreatePost"
+        component={View}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate('HomeNav', { screen: 'CreatePost' });
+          },
+        })}
         options={{
           tabBarIcon: ({ color }) => <Icon name="plus" size={20} color={color} />,
         }}
